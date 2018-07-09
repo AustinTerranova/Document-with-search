@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2DDB6C5D20F3E27000316D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB6C5C20F3E27000316D64 /* AppDelegate.swift */; };
-		2DDB6C5F20F3E27000316D64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB6C5E20F3E27000316D64 /* ViewController.swift */; };
 		2DDB6C6220F3E27000316D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB6C6020F3E27000316D64 /* Main.storyboard */; };
 		2DDB6C6520F3E27000316D64 /* Documents_Core_Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB6C6320F3E27000316D64 /* Documents_Core_Data.xcdatamodeld */; };
 		2DDB6C6720F3E27100316D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB6C6620F3E27100316D64 /* Assets.xcassets */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		2DDB6C5920F3E26F00316D64 /* Documents Core Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documents Core Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDB6C5C20F3E27000316D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2DDB6C5E20F3E27000316D64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2DDB6C6120F3E27000316D64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2DDB6C6420F3E27000316D64 /* Documents_Core_Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Documents_Core_Data.xcdatamodel; sourceTree = "<group>"; };
 		2DDB6C6620F3E27100316D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				2DDB6C5C20F3E27000316D64 /* AppDelegate.swift */,
-				2DDB6C5E20F3E27000316D64 /* ViewController.swift */,
 				2DDB6C6020F3E27000316D64 /* Main.storyboard */,
 				2DDB6C6620F3E27100316D64 /* Assets.xcassets */,
 				2DDB6C6820F3E27100316D64 /* LaunchScreen.storyboard */,
@@ -200,7 +197,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DDB6C5F20F3E27000316D64 /* ViewController.swift in Sources */,
 				2DDB6C5D20F3E27000316D64 /* AppDelegate.swift in Sources */,
 				2DDB6C6520F3E27000316D64 /* Documents_Core_Data.xcdatamodeld in Sources */,
 			);
@@ -363,13 +359,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YDM8336QES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Documents Core Data/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dalemusser.Documents-Core-Data";
+				PRODUCT_BUNDLE_IDENTIFIER = "online.techinnovator.Documents-Core-Data";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -381,13 +378,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YDM8336QES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Documents Core Data/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dalemusser.Documents-Core-Data";
+				PRODUCT_BUNDLE_IDENTIFIER = "online.techinnovator.Documents-Core-Data";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
