@@ -20,9 +20,10 @@ class DocumentViewController: UIViewController {
         title = ""
 
         if let document = document {
-            nameTextField.text = document.name
-            contentTextView.text = document.content
-            title = document.name
+            let name = document.getName()
+            nameTextField.text = name
+            contentTextView.text = document.getContent()
+            title = name
         }
     }
 

@@ -53,10 +53,10 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
         
         if let cell = cell as? DocumentTableViewCell {
             let document = documents[indexPath.row]
-            cell.nameLabel.text = document.name
-            cell.sizeLabel.text = String(document.size) + " bytes"
+            cell.nameLabel.text = document.getName()
+            cell.sizeLabel.text = String(document.getSize()) + " bytes"
             
-            if let modifiedDate = document.modifiedDate {
+            if let modifiedDate = document.getModifiedDate() {
                 cell.modifiedLabel.text = dateFormatter.string(from: modifiedDate)
             } else {
                 cell.modifiedLabel.text = "unknown"
