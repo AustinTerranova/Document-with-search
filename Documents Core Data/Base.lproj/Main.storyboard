@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="documentCell" rowHeight="80" id="eDP-Xb-Hpj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="documentCell" rowHeight="80" id="eDP-Xb-Hpj" customClass="DocumentTableViewCell" customModule="Documents_Core_Data" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eDP-Xb-Hpj" id="Ree-zJ-Hdr">
@@ -77,6 +77,11 @@
                                                 <constraint firstItem="2TB-xs-hwc" firstAttribute="top" secondItem="MX0-rd-AmV" secondAttribute="bottom" constant="4" id="zfh-1G-EVf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="modifiedLabel" destination="gjA-6r-aO7" id="AH5-Bq-07R"/>
+                                            <outlet property="nameLabel" destination="GCL-5y-SqL" id="ICA-EH-JiB"/>
+                                            <outlet property="sizeLabel" destination="DO4-y0-y8N" id="kdt-os-OHY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
