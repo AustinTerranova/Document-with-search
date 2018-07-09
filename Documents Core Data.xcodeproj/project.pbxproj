@@ -84,11 +84,11 @@
 				2DDB6C5C20F3E27000316D64 /* AppDelegate.swift */,
 				2DDB6C6020F3E27000316D64 /* Main.storyboard */,
 				2DDB6C7F20F3E88B00316D64 /* DocumentsViewController.swift */,
+				2DDB6C8120F3E96100316D64 /* DocumentTableViewCell.swift */,
 				2DDB6C6620F3E27100316D64 /* Assets.xcassets */,
 				2DDB6C6820F3E27100316D64 /* LaunchScreen.storyboard */,
 				2DDB6C6B20F3E27100316D64 /* Info.plist */,
 				2DDB6C6320F3E27000316D64 /* Documents_Core_Data.xcdatamodeld */,
-				2DDB6C8120F3E96100316D64 /* DocumentTableViewCell.swift */,
 			);
 			path = "Documents Core Data";
 			sourceTree = "<group>";
