@@ -18,7 +18,8 @@ extension Document {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var size: Int32
+    @NSManaged public var size: Int64
     @NSManaged public var rawModifiedDate: NSDate?
+    @NSManaged public var content: String?
 
 }

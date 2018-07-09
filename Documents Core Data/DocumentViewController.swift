@@ -12,10 +12,18 @@ class DocumentViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
+    var document: Document?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = ""
 
-        // Do any additional setup after loading the view.
+        if let document = document {
+            nameTextField.text = document.name
+            contentTextView.text = document.content
+            title = document.name
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,11 +32,36 @@ class DocumentViewController: UIViewController {
     }
 
     @IBAction func save(_ sender: Any) {
+        guard let name = nameTextField.text, name != "" else {
+            print("A title is required. Document not saved.")
+            return
+        }
+        
+        let content = contentTextView.text
+        
+        if document == nil {
+            // document doesn't exist, create new one
+            document = Document(name: name, content: content)
+        } else {
+            // document exists, update existing one
+            document?.update(name: name, content: content)
+        }
+        
+        if let document = document {
+            do {
+                let managedContext = document.managedObjectContext
+                try managedContext?.save()
+            } catch {
+                print("Context could not be saved")
+            }
+        } else {
+            print("Document could not be created.")
+        }
         
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nameChanged(_ sender: Any) {
-        
+        title = nameTextField.text
     }
 }
