@@ -31,6 +31,7 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
         }
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         do {
             documents = try managedContext.fetch(fetchRequest)
