@@ -36,8 +36,19 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
             documents = try managedContext.fetch(fetchRequest)
             documentsTableView.reloadData()
         } catch {
-            print("Fetch could not be performed")
+            alertNotifyUser(message: "Fetch for documents could not be performed.")
+            return
         }
+    }
+    
+    func alertNotifyUser(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) {
+            (alertAction) -> Void in
+            print("OK selected")
+        })
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,10 +64,10 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
         
         if let cell = cell as? DocumentTableViewCell {
             let document = documents[indexPath.row]
-            cell.nameLabel.text = document.getName()
-            cell.sizeLabel.text = String(document.getSize()) + " bytes"
+            cell.nameLabel.text = document.name
+            cell.sizeLabel.text = String(document.size) + " bytes"
             
-            if let modifiedDate = document.getModifiedDate() {
+            if let modifiedDate = document.modifiedDate {
                 cell.modifiedLabel.text = dateFormatter.string(from: modifiedDate)
             } else {
                 cell.modifiedLabel.text = "unknown"
@@ -91,16 +102,32 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
                 self.documents.remove(at: indexPath.row)
                 documentsTableView.deleteRows(at: [indexPath], with: .automatic)
             } catch {
-                print("Delete failed.")
+                alertNotifyUser(message: "Delete failed.")
                 documentsTableView.reloadData()
             }
         }
     }
     
+    // There are two approaches to implementing deletion of table view cells.  Both are provided below.
+    
+    // Approach 1: using editing style
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteDocument(at: indexPath)
         }
     }
+    
+    /*
+    // Approach 2: using editing actions
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
+            action, index in
+            self.deleteDocument(at: indexPath)  // self is required because inside of closure
+        }
+        
+        return [delete]
+    }
+    */
+ 
 
 }
