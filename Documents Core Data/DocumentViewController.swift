@@ -34,23 +34,20 @@ class DocumentViewController: UIViewController {
     
     func alertNotifyUser(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) {
-            (alertAction) -> Void in
-            print("OK selected")
-        })
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
 
     @IBAction func save(_ sender: Any) {
         guard let name = nameTextField.text else {
-            alertNotifyUser(message: "Document not saved. The name is not accessible.")
+            alertNotifyUser(message: "Document not saved.\nThe name is not accessible.")
             return
         }
         
         let documentName = name.trimmingCharacters(in: .whitespaces)
         if (documentName == "") {
-            alertNotifyUser(message: "Document not saved. A name is required.")
+            alertNotifyUser(message: "Document not saved.\nA name is required.")
             return
         }
         
