@@ -11,9 +11,7 @@ import CoreData
 
 class DocumentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var documentsTableView: UITableView!
-    
     let dateFormatter = DateFormatter()
-    
     var documents = [Document]()
 
     override func viewDidLoad() {
@@ -26,20 +24,8 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        do {
-            documents = try managedContext.fetch(fetchRequest)
-            documentsTableView.reloadData()
-        } catch {
-            alertNotifyUser(message: "Fetch for documents could not be performed.")
-            return
-        }
+        fetchDocuments()
+        documentsTableView.reloadData()
     }
     
     func alertNotifyUser(message: String) {
@@ -50,6 +36,39 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
         })
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func fetchDocuments() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)] // order results by document name ascending
+        
+        do {
+            documents = try managedContext.fetch(fetchRequest)
+        } catch {
+            alertNotifyUser(message: "Fetch for documents could not be performed.")
+            return
+        }
+    }
+    
+    func deleteDocument(at indexPath: IndexPath) {
+        let document = documents[indexPath.row]
+        
+        if let managedObjectContext = document.managedObjectContext {
+            managedObjectContext.delete(document)
+            
+            do {
+                try managedObjectContext.save()
+                self.documents.remove(at: indexPath.row)
+                documentsTableView.deleteRows(at: [indexPath], with: .automatic)
+            } catch {
+                alertNotifyUser(message: "Delete failed.")
+                documentsTableView.reloadData()
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,7 +92,6 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
             } else {
                 cell.modifiedLabel.text = "unknown"
             }
-            
         }
         
         return cell
@@ -89,23 +107,6 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
            let segueIdentifier = segue.identifier, segueIdentifier == "existingDocument",
            let row = documentsTableView.indexPathForSelectedRow?.row {
                 destination.document = documents[row]
-        }
-    }
-    
-    func deleteDocument(at indexPath: IndexPath) {
-        let document = documents[indexPath.row]
-        
-        if let managedObjectContext = document.managedObjectContext {
-            managedObjectContext.delete(document)
-            
-            do {
-                try managedObjectContext.save()
-                self.documents.remove(at: indexPath.row)
-                documentsTableView.deleteRows(at: [indexPath], with: .automatic)
-            } catch {
-                alertNotifyUser(message: "Delete failed.")
-                documentsTableView.reloadData()
-            }
         }
     }
     
