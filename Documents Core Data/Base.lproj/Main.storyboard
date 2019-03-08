@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qbm-l0-GCK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qbm-l0-GCK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,13 +36,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX0-rd-AmV">
-                                                    <rect key="frame" x="15" y="33" width="27.5" height="15"/>
+                                                    <rect key="frame" x="15" y="33" width="28" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DO4-y0-y8N">
-                                                    <rect key="frame" x="46.5" y="33" width="31" height="15"/>
+                                                    <rect key="frame" x="47" y="33" width="31" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -95,7 +94,7 @@
                         <constraints>
                             <constraint firstItem="ZWU-em-kPx" firstAttribute="bottom" secondItem="SwV-tx-mq6" secondAttribute="bottom" id="0id-Mt-OFC"/>
                             <constraint firstItem="ZWU-em-kPx" firstAttribute="trailing" secondItem="SwV-tx-mq6" secondAttribute="trailing" id="Sdc-UD-8Nw"/>
-                            <constraint firstItem="SwV-tx-mq6" firstAttribute="top" secondItem="ZWU-em-kPx" secondAttribute="top" id="bUi-Rd-euY"/>
+                            <constraint firstItem="SwV-tx-mq6" firstAttribute="top" secondItem="ZWU-em-kPx" secondAttribute="top" id="sa1-GC-NZL"/>
                             <constraint firstItem="SwV-tx-mq6" firstAttribute="leading" secondItem="ZWU-em-kPx" secondAttribute="leading" id="tLe-5D-qmT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZWU-em-kPx"/>
@@ -113,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0q-C2-eU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="227"/>
+            <point key="canvasLocation" x="1120.8" y="226.23688155922042"/>
         </scene>
         <!--Title-->
         <scene sceneID="IGm-QK-nMu">
@@ -130,7 +129,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hRS-K4-JsA">
-                                <rect key="frame" x="74" y="74" width="285" height="30"/>
+                                <rect key="frame" x="74" y="74.5" width="285" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>

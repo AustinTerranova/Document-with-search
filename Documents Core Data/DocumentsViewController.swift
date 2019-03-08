@@ -9,22 +9,33 @@
 import UIKit
 import CoreData
 
-class DocumentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DocumentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+    
+    
     @IBOutlet weak var documentsTableView: UITableView!
     let dateFormatter = DateFormatter()
     var documents = [Document]()
-
+    var searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Documents"
-
+        
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .medium
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "search"
+        searchController.hidesNavigationBarDuringPresentation = false
+        documentsTableView.tableHeaderView = searchController.searchBar
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchDocuments()
+        fetchDocuments(searchText: "")
         documentsTableView.reloadData()
     }
     
@@ -38,7 +49,7 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
         self.present(alert, animated: true, completion: nil)
     }
     
-    func fetchDocuments() {
+    func fetchDocuments(searchText: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -47,11 +58,23 @@ class DocumentsViewController: UIViewController, UITableViewDataSource, UITableV
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)] // order results by document name ascending
         
         do {
+            if (searchText != ""){
+                print(searchText)
+                fetchRequest.predicate = NSPredicate(format: "name contains[c] %@ OR content contains[c] %@", searchText, searchText)
+            }
             documents = try managedContext.fetch(fetchRequest)
+            documentsTableView.reloadData()
         } catch {
             alertNotifyUser(message: "Fetch for documents could not be performed.")
             return
         }
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text
+        
+        
+            fetchDocuments(searchText: searchText!)
+        
     }
     
     func deleteDocument(at indexPath: IndexPath) {
